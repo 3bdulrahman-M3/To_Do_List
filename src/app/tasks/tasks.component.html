@@ -1,0 +1,24 @@
+
+@if(isAddingTask){
+    <app-new-task [userId]="userId" (Close)="onCloseAddTask()"></app-new-task>
+}
+<section id="tasks">
+    <header>
+        <h2>{{name}}'s Tasks</h2>
+        <menu>
+            <button (click)="onStartaddTask()">Add Task</button>
+            <!-- <button (click)="removeCompletedTasks()">Remove Completed Tasks</button>
+            <button (click)="clearTasks()">Clear Tasks</button>
+            <button (click)="toggleAllTasks()">Toggle All Tasks</button>
+            <button (click)="sortTasks()">Sort Tasks</button> -->
+        </menu>
+    </header>
+    <ul>
+        @for(task of selectedUserTask ; track task.id){
+        <li>
+            <app-task [task]="task" (Complete)="onCompleteTask($event)"/>
+        </li>
+        }
+         
+    </ul>
+</section>
